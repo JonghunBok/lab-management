@@ -3,7 +3,7 @@ cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-get install -y kubelet=1.14.10-00 kubeadm=1.14.10-00 kubectl=1.14.10-00
 sudo vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf 
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
