@@ -17,4 +17,4 @@ sudo kubeadm reset
 
 # Change the IP and the token below
 
-sudo kubeadm join 192.168.0.4:6443 --token 1yeh0p.cghl30nu2dm67rwn     --discovery-token-ca-cert-hash sha256:92e98a1b3f07c62941d06a6bc074dd301211f7a94bd72a33f6bfdb321ec2e7b7
+# sudo kubeadm join 192.168.0.4:6443 --token 1yeh0p.cghl30nu2dm67rwn     --discovery-token-ca-cert-hash sha256:92e98a1b3f07c62941d06a6bc074dd301211f7a94bd72a33f6bfdb321ec2e7b7
