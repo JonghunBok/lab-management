@@ -5,6 +5,8 @@ EOF
 sudo apt-get update
 sudo apt-get install -y kubelet=1.14.10-00 kubeadm=1.14.10-00 kubectl=1.14.10-00
 sudo vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf 
+# Add [Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"]
+
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 sudo swapoff -a
