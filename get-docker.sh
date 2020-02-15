@@ -12,3 +12,5 @@ sudo apt update
 sudo apt install docker-ce -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
+# To let the user use docker without sudo
+sudo usermod -aG docker $USER 
