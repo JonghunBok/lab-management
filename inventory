@@ -1,0 +1,9 @@
+[masters]
+master01
+
+[workers]
+worker01
+worker02
+worker03
+worker04
+worker05
