@@ -1,0 +1,40 @@
+---
+- hosts: all
+  remote_user: cilab
+  become: yes
+  become_method: sudo
+  become_user: root
+
+  vars_files:
+    - "../vault/passwords.yaml"
+
+  vars:
+    ansible_become_pass: "{{ admin_password }}"
+    password: "{{ default_password }}"
+
+  tasks:
+    - name: "Add user '{{ item }}' with docker group"
+      user:
+        name: "{{ item }}"
+        comment: cilab
+        shell: /bin/bash
+        groups: docker
+        append: yes
+        update_password: on_create
+        password: "{{ password | password_hash('sha512') }}"
+      loop:
+        - jonghun
+        - hongiee
+        - supermoon
+        - jjyunho
+        - uwonsang
+        - taehwa
+        - ureca07
+        - baecm
+        - kevinjeon
+        - ksh
+        - sungmin
+        - isaac
+        - rimha2
+        - oeun318
+        - newID

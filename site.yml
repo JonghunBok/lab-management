@@ -1,0 +1,11 @@
+---
+- name: Do the basic set-up (Utils, Nvidia Driver, User Management, Docker)
+  hosts: all
+  remote_user: root
+
+
+  roles:
+    - utils
+      #- nvidia-driver
+      #- add-user
+      #- docker

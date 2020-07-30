@@ -1,0 +1,8 @@
+---
+- name: Install basic utils
+  apt: name={{ item }} state=present
+  loops:
+    - vim 
+    - git 
+    - tmux 
+    - x11-apps 
