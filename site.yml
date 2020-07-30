@@ -1,8 +1,16 @@
 ---
 - name: Do the basic set-up (Utils, Nvidia Driver, User Management, Docker)
   hosts: all
-  remote_user: root
+  remote_user: cilab
+  become: yes
+  become_method: sudo
+  become_user: root
 
+  vars_files:
+    - "vault/passwords.yaml"
+
+  vars:
+    ansible_become_pass: "{{ admin_password }}"
 
   roles:
     - utils

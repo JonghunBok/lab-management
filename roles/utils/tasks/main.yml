@@ -1,7 +1,7 @@
 ---
 - name: Install basic utils
   apt: name={{ item }} state=present
-  loops:
+  loop:
     - vim 
     - git 
     - tmux 
