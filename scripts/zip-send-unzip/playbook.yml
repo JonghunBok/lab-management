@@ -1,0 +1,17 @@
+- name: unarchive  the thing
+  hosts: all
+
+  vars:
+    dest: ""
+    archive: ""
+
+  tasks:
+    - name: devbug
+      debug:
+        var: archive
+        #        var: dest
+    - name: Send {{ archive }} and unzip to {{ dest }}
+      unarchive:
+        src: "{{ archive }}"
+        dest: "{{ dest }}"
+
