@@ -1,0 +1,4 @@
+---
+# vars file for addUser
+admin_id: cilab
+distro_codename: focal

@@ -12,8 +12,12 @@
   vars:
     ansible_become_pass: "{{ admin_password }}"
 
+  tasks:
+    - name: "pnging"
+      ping: 
+
   roles:
-    - utils
-      #- nvidia-driver
+    - setup-docker
+      #- utils
+      #- docker-and-driver
       #- add-user
-      #- docker

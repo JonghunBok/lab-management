@@ -1,0 +1,43 @@
+---
+- name: Update repositories cahce and install 
+  apt:
+    pkg: 
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+    
+    update_cache: yes
+
+- name: Add Docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/ubuntu {{ distro_codename }} stable"
+    state: present
+
+- name: Install Docker
+  apt:
+    name: docker-ce
+    state: latest
+    update_cache: yes
+
+- name: Append Docker group to the admin user
+  user:
+    name: "{{ admin_id }}"
+    append: yes
+    groups: docker
+
+- name: Add graphcis-drivers repository
+  apt_repository:
+    repo: ppa:graphics-drivers/ppa
+    state: present
+
+- name: Install nvidia driver and utils
+  apt:
+    pkg:
+    - nvidia-utils-450
+    - nvidia-driver-450

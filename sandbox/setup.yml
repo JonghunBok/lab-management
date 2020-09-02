@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: hardworkers
   become: yes
   vars_files:
     - vars/default.yml
@@ -45,8 +45,8 @@
     - name: Install nvidia driver and utils
       apt:
         pkg:
-        - nvidia-utils-440
-        - nvidia-driver-440
+        - nvidia-utils-450
+        - nvidia-driver-450
 
 
 

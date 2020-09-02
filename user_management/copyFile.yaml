@@ -1,0 +1,26 @@
+---
+- hosts: all
+  remote_user: cilab
+  become: yes
+  become_method: sudo
+  become_user: root
+
+  vars_files:
+    - "../vault/passwords.yaml"
+
+  vars:
+    ansible_become_pass: "{{ admin_password }}"
+
+  tasks:
+    - name: "Make sure there is a directory"
+      file:
+        path: /data
+        state: directory
+        mode: '0777'
+
+    - name: "Copy files to the nodes"
+      copy:
+        src: /data/ADD
+        dest: /data/ADD
+        mode: '0777'
+
