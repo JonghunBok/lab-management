@@ -1,0 +1,38 @@
+---
+- name: Update repositories cahce and install 
+  apt:
+    pkg: 
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+    
+    update_cache: yes
+
+- name: Add graphcis-drivers repository
+  apt_repository:
+    repo: ppa:graphics-drivers/ppa
+    state: present
+
+- name: Check if nvidia drivers are installed
+  shell: apt list --installed | grep nvidia
+  ignore_errors: yes
+  changed_when: no
+  no_log: True
+  register: nvidia_drivers
+
+- name: Remove nvidia drivers
+  apt:
+    name: "nvidia-*"
+    state: absent
+    autoremove: yes
+    purge: yes
+  when: nvidia_drivers.rc == 0
+
+- name: Install nvidia driver and utils
+  apt:
+    state: present
+    update_cache: yes
+    pkg:
+    - nvidia-utils-450
+    - nvidia-driver-450

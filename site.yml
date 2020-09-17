@@ -17,7 +17,8 @@
       ping: 
 
   roles:
-    - setup-docker
+    - install-driver
+      #- setup-docker
       #- utils
       #- docker-and-driver
       #- add-user

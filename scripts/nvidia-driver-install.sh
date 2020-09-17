@@ -1,3 +1,5 @@
+sudo apt-get purge nvidia-* -y
+
 sudo add-apt-repository ppa:graphics-drivers/ppa -y
 sudo apt update
 sudo apt install nvidia-utils-450  -y
