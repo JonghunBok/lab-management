@@ -19,6 +19,9 @@
     repo: "deb https://download.docker.com/linux/ubuntu {{ distro_codename }} stable"
     state: present
 
+- name: Make Daemon.json and set default bip
+  script: ../files/set-bip.sh
+
 - name: Install Docker
   apt:
     name: docker-ce
@@ -30,14 +33,3 @@
     name: "{{ admin_id }}"
     append: yes
     groups: docker
-
-- name: Add graphcis-drivers repository
-  apt_repository:
-    repo: ppa:graphics-drivers/ppa
-    state: present
-
-- name: Install nvidia driver and utils
-  apt:
-    pkg:
-    - nvidia-utils-450
-    - nvidia-driver-450

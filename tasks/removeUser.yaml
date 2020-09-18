@@ -12,7 +12,7 @@
     ansible_become_pass: "{{ admin_password }}"
 
   tasks:
-    - name: "Remove users'"
+    - name: "Remove user '{{ item }}'"
       user:
         name: "{{ item }}"
         state: absent

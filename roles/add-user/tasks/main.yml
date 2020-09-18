@@ -1,5 +1,5 @@
 ---
-- name: "Add user '{{ item }}' with docker group"
+- name: "Add users item with docker group"
   user:
     name: "{{ item }}"
     comment: cilab

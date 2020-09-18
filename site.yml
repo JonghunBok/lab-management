@@ -1,6 +1,6 @@
 ---
 - name: Do the basic set-up (Utils, Nvidia Driver, User Management, Docker)
-  hosts: all
+  hosts: masters
   remote_user: cilab
   become: yes
   become_method: sudo
@@ -11,14 +11,20 @@
 
   vars:
     ansible_become_pass: "{{ admin_password }}"
+    distribution: "ubuntu18.04"
 
   tasks:
     - name: "pnging"
       ping: 
 
   roles:
-    - install-driver
-      #- setup-docker
-      #- utils
-      #- docker-and-driver
-      #- add-user
+    #- utils
+    #- install-driver
+    #- docker-and-driver
+    - role: setup-docker
+      vars:
+        disrtibution: "{{ distribution }}"
+    #- role: add-user
+    #vars:
+    #password: "{{default_password}}"
+      

@@ -1,3 +1,27 @@
 ---
 - name: Run the script to make nodes listen on 0.0.0.0:2375
   script: ../files/setup-docker.sh
+
+- name: Add nvidia-docker GPG apt key
+  apt_key:
+    url: https://nvidia.github.io/nvidia-docker/gpgkey
+    state: present
+
+- name: Add nvidia-docker Repository (for ubuntu)
+  get_url:
+    url: "https://nvidia.github.io/nvidia-docker/{{ distribution }}/nvidia-docker.list"
+    dest: "/etc/apt/sources.list.d/nvidia-docker.list"
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Install nvidia-docker
+  apt:
+    name: nvidia-container-toolkit
+    state: latest
+    update_cache: yes
+
+- name: reload docker
+  service:
+    name: docker
+    state: reloaded

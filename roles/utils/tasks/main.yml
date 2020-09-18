@@ -1,4 +1,10 @@
 ---
+# - name: Set python to python3
+# alternatives:
+# name: python
+# link: /usr/bin/python
+# path: /usr/bin/python3
+
 - name: Install basic utils
   apt: name={{ item }} state=present
   loop:

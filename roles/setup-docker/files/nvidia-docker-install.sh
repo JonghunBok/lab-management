@@ -1,13 +1,3 @@
-sudo apt-get purge nvidia-* -y
-
-sudo add-apt-repository ppa:graphics-drivers/ppa -y
-sudo apt update
-sudo apt install nvidia-utils-450  -y
-sudo apt install nvidia-driver-450  -y
-
-# sudo reboot
-
-
 # 출처: https://github.com/NVIDIA/nvidia-docker
 # Add the package repositories
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
